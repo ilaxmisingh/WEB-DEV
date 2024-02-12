@@ -1,1 +1,28 @@
+html{
+    font-size: 16px;
+}
+body{
+    color:var(black);
+    background:black;
+}
+.navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height:4rem;
+    display: flex;
+    align-items: center;
+    padding: 0 10vw;
+    z-index: 9;
+    background:skyblue;
+}
+.logo{
 
+}
+.link-container{
+    display: flex;
+    gap:irem;
+    list-style: none;
+    
+}
