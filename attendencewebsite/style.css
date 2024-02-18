@@ -1,18 +1,30 @@
-h1{
-    font-size: medium;
-    align-items: center;
-    margin: auto;
-    padding: 50px;
-    color: rgb(19, 173, 179);
+body {
+    font-family: Arial, sans-serif;
 }
-p{
-    font-size: small;
-    align-items: center;
-    margin: auto;
-    padding: 10px;
-    color: black;
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
 }
-body{
-    background-color: rgb(187, 224, 235);
-    font-size:20px;
+
+h1 {
+    color: #333;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#attendanceList {
+    margin-top: 20px;
+    text-align: left;
 }
