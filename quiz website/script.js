@@ -1,64 +1,75 @@
-const quizData = [
+// Define quiz questions
+const questions = [
     {
         question: "What is the capital of France?",
-        answers: ["Paris", "Berlin", "Madrid", "Rome"],
-        correct: "Paris"
+        options: ["Paris", "London", "Berlin", "Rome"],
+        answer: "Paris"
     },
     {
         question: "Which planet is known as the Red Planet?",
-        answers: ["Earth", "Mars", "Jupiter", "Venus"],
-        correct: "Mars"
+        options: ["Mars", "Venus", "Jupiter", "Saturn"],
+        answer: "Mars"
     },
     // Add more questions as needed
 ];
 
 let currentQuestion = 0;
+let score = 0;
 
-const questionText = document.getElementById('question-text');
-const answerButtons = document.getElementById('answer-buttons');
+const questionElement = document.getElementById('question');
+const optionsElement = document.getElementById('options');
+const resultElement = document.getElementById('result');
+const submitButton = document.getElementById('submit');
 
-function startQuiz() {
-    showQuestion();
-}
+// Function to display current question
+function displayQuestion() {
+    const q = questions[currentQuestion];
+    questionElement.textContent = q.question;
 
-function showQuestion() {
-    const question = quizData[currentQuestion];
-    questionText.innerText = question.question;
-    answerButtons.innerHTML = '';
-
-    question.answers.forEach(answer => {
+    optionsElement.innerHTML = '';
+    q.options.forEach(option => {
         const button = document.createElement('button');
-        button.innerText = answer;
-        button.classList.add('btn');
-        button.addEventListener('click', () => selectAnswer(answer));
-        answerButtons.appendChild(button);
+        button.textContent = option;
+        button.onclick = () => checkAnswer(option);
+        optionsElement.appendChild(button);
     });
 }
 
-function selectAnswer(selectedAnswer) {
-    const question = quizData[currentQuestion];
-
-    if (selectedAnswer === question.correct) {
-        // Handle correct answer
-        // For simplicity, you can show an alert or update a score here
-    }
-
-    // Move to the next question
-    currentQuestion++;
-
-    if (currentQuestion < quizData.length) {
-        showQuestion();
+// Function to check user's answer
+function checkAnswer(answer) {
+    const q = questions[currentQuestion];
+    if (answer === q.answer) {
+        score++;
+        resultElement.textContent = "Correct!";
     } else {
-        // End of the quiz, you can display a summary or redirect to a result page
-        alert("Quiz completed!");
+        resultElement.textContent = "Incorrect!";
+    }
+    currentQuestion++;
+
+    // Check if quiz is finished
+    if (currentQuestion < questions.length) {
+        displayQuestion();
+    } else {
+        showResult();
     }
 }
 
-function nextQuestion() {
-    currentQuestion++;
-    showQuestion();
+// Function to show final result
+function showResult() {
+    questionElement.textContent = `Quiz Finished! Your Score: ${score}/${questions.length}`;
+    optionsElement.innerHTML = '';
+    submitButton.style.display = 'none';
 }
 
-// Start the quiz when the page loads
-document.addEventListener('DOMContentLoaded', startQuiz);
+// Event listener for submit button
+submitButton.addEventListener('click', () => {
+    const selectedOption = document.querySelector('input[type=radio]:checked');
+    if (selectedOption) {
+        checkAnswer(selectedOption.value);
+    } else {
+        resultElement.textContent = "Please select an option!";
+    }
+});
 
+// Display first question on page load
+displayQuestion();
