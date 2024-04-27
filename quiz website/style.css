@@ -1,38 +1,59 @@
-body {
-    font-family: 'Arial', sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
+body{
+    background-color:rgb(72, 75, 228);
 }
+h1{
+    display: inline-block;
+    border-radius: 2px;
+    font-size: 5em;
+    font-weight: bold;
+    unicode-bidi: isolate;
+align-items: center;
+    color: white;
+    margin:13px 200px;
+    background-color: rgb(92, 92, 199);
 
-#quiz-container {
-    max-width: 600px;
-    text-align: center;
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
-.btn-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+div {
+ width:400px;
+ height: 100px;
+ margin: 0 auto;
+ padding: 30px;
+ text-align: center;
+ border: 10px solid #ccc;
+ background-color: white;
+ font-size: 2em;
 }
-
-.btn {
-    padding: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #3498db;
-    color: #fff;
+#submit {
+    background-color: rgb(50, 172, 50);
     border: none;
-    border-radius: 4px;
-}
+    border-radius: 10px;
+    width: 100px;
+    height: 50px;
+    margin: auto; /* Center horizontally */
+    position: absolute; /* Position absolutely */
+    top: 95%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust to center */
+    padding: 10px;
+    text-align: center;
+    color: white;
+  }
+  #options {
+    display: flex; /* Use Flexbox */
+    justify-content: space-around; /* Distribute space evenly between items */
+    
 
-.btn:hover {
-    background-color: #2980b9;
-}
-
+    
+  }
+  
+  .option {
+    width: 200px; /* Adjust the width of each option */
+    height: 10px; /* Adjust the height of each option */
+    background-color: rgb(74, 124, 218); /* Background color of each option */
+    margin: 10px; /* Add margin between options */
+    border-radius: 10px; /* Add border radius */
+    display: flex; /* Use Flexbox */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+  }
+  
