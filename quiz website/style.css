@@ -31,7 +31,7 @@ div {
     height: 50px;
     margin: auto; /* Center horizontally */
     position: absolute; /* Position absolutely */
-    top: 95%; /* Center vertically */
+    top: 120%; /* Center vertically */
     left: 50%; /* Center horizontally */
     transform: translate(-50%, -50%); /* Adjust to center */
     padding: 10px;
@@ -39,21 +39,18 @@ div {
     color: white;
   }
   #options {
-    display: flex; /* Use Flexbox */
-    justify-content: space-around; /* Distribute space evenly between items */
-    
-
-    
-  }
-  
-  .option {
-    width: 200px; /* Adjust the width of each option */
-    height: 10px; /* Adjust the height of each option */
-    background-color: rgb(74, 124, 218); /* Background color of each option */
-    margin: 10px; /* Add margin between options */
-    border-radius: 10px; /* Add border radius */
+   
+    width:400px;
+ height: 100px;
+ margin: 0 auto;
+ padding: 30px;
+ text-align: center; /* Add margin between options */
+   /* Add border radius */
     display: flex; /* Use Flexbox */
     justify-content: center; /* Center content horizontally */
     align-items: center; /* Center content vertically */
+    
+    
   }
+  
   
