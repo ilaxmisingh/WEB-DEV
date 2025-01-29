@@ -1,75 +1,90 @@
-// Define quiz questions
-const questions = [
-    {
-        question: "What is the capital of France?",
-        options: ["Paris", "London", "Berlin", "Rome"],
-        answer: "Paris"
-    },
-    {
-        question: "Which planet is known as the Red Planet?",
-        options: ["Mars", "Venus", "Jupiter", "Saturn"],
-        answer: "Mars"
-    },
-    // Add more questions as needed
-];
+const quizData = {
+    html: [
+        { question: "What does HTML stand for?", options: ["Hyper Text Markup Language", "Hyperlinks Text Markup Language", "Home Tool Markup Language", "Hyper Transfer Markup Language"], answer: 0 },
+        { question: "Which HTML tag is used to define an internal style sheet?", options: ["<css>", "<style>", "<script>", "<link>"], answer: 1 }
+    ],
+    css: [
+        { question: "Which property is used to change the background color?", options: ["color", "background-color", "bgcolor", "background"], answer: 1 },
+        { question: "Which CSS property controls the text size?", options: ["text-size", "font-style", "font-size", "text-style"], answer: 2 }
+    ],
+    javascript: [
+        { question: "Which company developed JavaScript?", options: ["Microsoft", "Apple", "Netscape", "Google"], answer: 2 },
+        { question: "What is used to declare a variable in JavaScript?", options: ["var", "let", "const", "All of the above"], answer: 3 }
+    ],
+    react: [
+        { question: "What is JSX in React?", options: ["Java XML", "JavaScript XML", "JSON XML", "None of the above"], answer: 1 },
+        { question: "What is the command to create a new React app?", options: ["react-new myApp", "npm create-react-app myApp", "npx create-react-app myApp", "create-react myApp"], answer: 2 }
+    ]
+};
 
-let currentQuestion = 0;
-let score = 0;
+let currentCategory, currentQuestionIndex, score, timeLeft, timer;
 
-const questionElement = document.getElementById('question');
-const optionsElement = document.getElementById('options');
-const resultElement = document.getElementById('result');
-const submitButton = document.getElementById('submit');
+function startQuiz(category) {
+    currentCategory = category;
+    currentQuestionIndex = 0;
+    score = 0;
+    document.getElementById("score-value").innerText = score;
+    document.getElementById("category-selection").classList.add("hidden");
+    document.getElementById("quiz-box").classList.remove("hidden");
+    loadQuestion();
+}
 
-// Function to display current question
-function displayQuestion() {
-    const q = questions[currentQuestion];
-    questionElement.textContent = q.question;
+function loadQuestion() {
+    clearInterval(timer);
+    if (currentQuestionIndex >= quizData[currentCategory].length) {
+        endQuiz();
+        return;
+    }
 
-    optionsElement.innerHTML = '';
-    q.options.forEach(option => {
-        const button = document.createElement('button');
-        button.textContent = option;
-        button.onclick = () => checkAnswer(option);
-        optionsElement.appendChild(button);
+    let questionData = quizData[currentCategory][currentQuestionIndex];
+    document.getElementById("question").innerText = questionData.question;
+    
+    let optionsContainer = document.getElementById("options");
+    optionsContainer.innerHTML = "";
+    questionData.options.forEach((option, index) => {
+        let button = document.createElement("button");
+        button.classList.add("category-btn");
+        button.innerText = option;
+        button.onclick = () => checkAnswer(index);
+        optionsContainer.appendChild(button);
     });
+
+    timeLeft = 15;
+    document.getElementById("time-left").innerText = timeLeft;
+    timer = setInterval(() => {
+        timeLeft--;
+        document.getElementById("time-left").innerText = timeLeft;
+        if (timeLeft <= 0) {
+            clearInterval(timer);
+            nextQuestion();
+        }
+    }, 1000);
 }
 
-// Function to check user's answer
-function checkAnswer(answer) {
-    const q = questions[currentQuestion];
-    if (answer === q.answer) {
-        score++;
-        resultElement.textContent = "Correct!";
+function checkAnswer(selectedIndex) {
+    let correctAnswer = quizData[currentCategory][currentQuestionIndex].answer;
+    if (selectedIndex === correctAnswer) {
+        score += 10;
     } else {
-        resultElement.textContent = "Incorrect!";
+        score -= 5;
     }
-    currentQuestion++;
-
-    // Check if quiz is finished
-    if (currentQuestion < questions.length) {
-        displayQuestion();
-    } else {
-        showResult();
-    }
+    document.getElementById("score-value").innerText = score;
+    nextQuestion();
 }
 
-// Function to show final result
-function showResult() {
-    questionElement.textContent = `Quiz Finished! Your Score: ${score}/${questions.length}`;
-    optionsElement.innerHTML = '';
-    submitButton.style.display = 'none';
+function nextQuestion() {
+    currentQuestionIndex++;
+    loadQuestion();
 }
 
-// Event listener for submit button
-submitButton.addEventListener('click', () => {
-    const selectedOption = document.querySelector('input[type=radio]:checked');
-    if (selectedOption) {
-        checkAnswer(selectedOption.value);
-    } else {
-        resultElement.textContent = "Please select an option!";
-    }
-});
+function endQuiz() {
+    clearInterval(timer);
+    document.getElementById("quiz-box").classList.add("hidden");
+    document.getElementById("result-box").classList.remove("hidden");
+    document.getElementById("final-score").innerText = score;
+}
 
-// Display first question on page load
-displayQuestion();
+function restartQuiz() {
+    document.getElementById("result-box").classList.add("hidden");
+    document.getElementById("category-selection").classList.remove("hidden");
+}
