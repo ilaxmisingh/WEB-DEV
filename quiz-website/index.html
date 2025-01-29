@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Development Quiz</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .quiz-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            color: #333;
+        }
+        .option-btn {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            background: #ff7e5f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .option-btn:hover {
+            background: #feb47b;
+        }
+        #next-btn {
+            margin-top: 10px;
+            padding: 10px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        #next-btn:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Web Development Quiz</h1>
+        <p id="score">Score: 0</p>
+        <div class="question-container">
+            <p id="question">Loading Question...</p>
+        </div>
+        <div class="options">
+            <button class="option-btn" id="option1" onclick="checkAnswer(0)"></button>
+            <button class="option-btn" id="option2" onclick="checkAnswer(1)"></button>
+            <button class="option-btn" id="option3" onclick="checkAnswer(2)"></button>
+            <button class="option-btn" id="option4" onclick="checkAnswer(3)"></button>
+        </div>
+        <p id="feedback"></p>
+        <button id="next-btn" onclick="nextQuestion()">Next Question</button>
+    </div>
+    <script>
+        const questions = [
+            {
+                question: "What does HTML stand for?",
+                options: ["Hyper Text Markup Language", "Home Tool Markup Language", "Hyperlinks and Text Markup Language", "Hyper Transfer Markup Language"],
+                answer: 0
+            },
+            {
+                question: "Which CSS property is used for changing text color?",
+                options: ["font-color", "color", "text-color", "background-color"],
+                answer: 1
+            },
+            {
+                question: "Which of the following is a JavaScript framework?",
+                options: ["React", "Django", "Laravel", "Spring"],
+                answer: 0
+            },
+            {
+                question: "What does CSS stand for?",
+                options: ["Creative Style Sheets", "Cascading Style Sheets", "Computer Style Sheets", "Colorful Style Sheets"],
+                answer: 1
+            }
+        ];
+        
+        let currentQuestionIndex = 0;
+        let score = 0;
+        
+        function loadQuestion() {
+            const currentQuestion = questions[currentQuestionIndex];
+            document.getElementById("question").innerText = currentQuestion.question;
+            document.getElementById("option1").innerText = currentQuestion.options[0];
+            document.getElementById("option2").innerText = currentQuestion.options[1];
+            document.getElementById("option3").innerText = currentQuestion.options[2];
+            document.getElementById("option4").innerText = currentQuestion.options[3];
+            document.getElementById("feedback").innerText = "";
+        }
+        
+        function checkAnswer(selected) {
+            const currentQuestion = questions[currentQuestionIndex];
+            if (selected === currentQuestion.answer) {
+                score += 10;
+                document.getElementById("feedback").innerText = "✅ Correct! +10 points";
+            } else {
+                score -= 5;
+                document.getElementById("feedback").innerText = "❌ Incorrect! -5 points";
+            }
+            document.getElementById("score").innerText = "Score: " + score;
+        }
+        
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                loadQuestion();
+            } else {
+                document.querySelector(".quiz-container").innerHTML = `<h1>Quiz Completed!</h1><p>Your final score: ${score}</p>`;
+            }
+        }
+        
+        loadQuestion();
+    </script>
+</body>
+</html>
