@@ -2,14 +2,16 @@
 🌦️ Weather Website
 A simple weather web application that provides real-time weather updates based on user input.
 
-🚀 Features
+🚀 Features:
 Search for weather by city name
 Display temperature, humidity, wind speed, and weather conditions
 Responsive design for mobile and desktop
 Uses OpenWeather API for real-time data
+
 🛠️ Tech Stack
 Frontend: HTML, CSS, JavaScript
 API: OpenWeather API
+
 📸 Screenshots
 ![Screenshot 2025-01-29 223356](https://github.com/user-attachments/assets/faf630cf-772b-409a-99fb-c37627356c26)
 
