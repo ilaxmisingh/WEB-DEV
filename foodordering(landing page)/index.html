@@ -3,24 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Food ordering landing page</title>
-    <link ref="stylesheet" href="style.css">
+    <title>Food Ordering Website</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Navbar -->
     <header>
-        
         <nav class="navbar">
-            
-            <img src="" class="logo" alt="">
-            
-            <ul class="links-container">
-                <li class="link-items"><a href="#" class="link">MENU</a></li>
-                <li class="link-items"><a href="#" class="link">ORDER</a></li>
-                <li class="link-items"><a href="#" class="link">RESTAURANTS</a></li>
-                <li class="link-items"><a href="#" class="link">TRACK ORDER</a></li>
-                <li class="link-items"><a href="#" class="link">OFFERS</a></li>
+            <div class="logo">
+                <img src="logo.jpeg" alt="Foodie Logo">
+                <h1>Foodie</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#cart" id="cartLink">Cart (0)</a></li>
+                <li><button id="loginBtn" onclick="login()">Login</button></li>
             </ul>
         </nav>
     </header>
+
+    <!-- Home Section -->
+    <section id="home" class="home-section">
+        <div class="home-content">
+            <h2>Order Your Favorite Food</h2>
+            <a href="#menu" class="btn">Browse Menu</a>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu-section">
+        <h2>Our Menu</h2>
+        <div class="menu-items">
+            <!-- Menu Items will be dynamically inserted here -->
+        </div>
+    </section>
+
+    <!-- Cart Section -->
+    <section id="cart" class="cart-section">
+        <h2>Your Cart</h2>
+        <div class="cart-content">
+            <p id="cartMessage">No items in your cart.</p>
+            <button id="checkoutBtn" class="btn">Proceed to Checkout</button>
+        </div>
+    </section>
+
+    <script src="app.js"></script>
 </body>
 </html>
