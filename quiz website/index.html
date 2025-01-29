@@ -3,15 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz App</title>
+    <title>Advanced Web Dev Quiz</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Welcome!It's Quiz time.</h1>
-    <div id="question"></div>
-    <div id="options"></div>
-  <button id="submit">Submit Answer</button>
-    <div id="result"></div>
+    <div class="quiz-container">
+        <h1>Advanced Web Development Quiz</h1>
+        
+        <div id="category-selection">
+            <h3>Select a Category</h3>
+            <button class="category-btn" onclick="startQuiz('html')">HTML</button>
+            <button class="category-btn" onclick="startQuiz('css')">CSS</button>
+            <button class="category-btn" onclick="startQuiz('javascript')">JavaScript</button>
+            <button class="category-btn" onclick="startQuiz('react')">React</button>
+        </div>
+
+        <div id="quiz-box" class="hidden">
+            <p id="question"></p>
+            <div id="options"></div>
+            <p id="timer">Time Left: <span id="time-left">15</span> sec</p>
+            <p id="score">Score: <span id="score-value">0</span></p>
+            <button id="next-btn" onclick="nextQuestion()">Next Question</button>
+        </div>
+
+        <div id="result-box" class="hidden">
+            <h2>Quiz Completed!</h2>
+            <p>Your final score: <span id="final-score"></span></p>
+            <button onclick="restartQuiz()">Play Again</button>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
