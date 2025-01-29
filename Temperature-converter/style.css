@@ -1,3 +1,97 @@
-h1{
-  margin:100px;
-}
+/* General Body Styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #00bcd4, #8e44ad);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: white;
+  }
+  
+  /* Container Styling */
+  .container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 350px;
+  }
+  
+  /* Header Styling */
+  h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  
+  /* Input Section Styling */
+  .input-section {
+    margin-bottom: 20px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2em;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    margin-bottom: 10px;
+  }
+  
+  input::placeholder {
+    color: white;
+    opacity: 0.7;
+  }
+  
+  /* Select Section Styling */
+  .select-section {
+    margin-bottom: 20px;
+  }
+  
+  select {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1em;
+    border-radius: 10px;
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    outline: none;
+  }
+  
+  /* Button Styling */
+  button {
+    padding: 15px;
+    background-color: #ff5722;
+    color: white;
+    font-size: 1.2em;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #e64a19;
+  }
+  
+  /* Output Section Styling */
+  .output {
+    margin-top: 30px;
+  }
+  
+  .output p {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #ffcc00;
+    margin-top: 20px;
+  }
+  
